@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hariom Lohar | Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #f66435;
+      --secondary: #f4efca;
+      --dark: #111111;
+      --light: #ffffff;
+      --gray: #f5f5f7;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    header {
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      opacity: 0.8;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+      opacity: 1;
+    }
+    
+    .cta-btn {
+      background-color: var(--primary);
+      color: var(--light);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      opacity: 1;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(246, 100, 53, 0.3);
+    }
+    
+    .mobile-menu {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-gradient {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at 70% 40%, rgba(244, 239, 202, 0.8) 0%, rgba(255, 255, 255, 0) 60%);
+      z-index: 0;
+    }
+    
+    .hero-content {
+      width: 100%;
+      max-width: 600px;
+      z-index: 1;
+    }
+    
+    .hero-subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .hero-title {
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+    
+    .hero-title span {
+      color: var(--primary);
+    }
+    
+    .hero-description {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(17, 17, 17, 0.8);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      background-color: var(--primary);
+      color: var(--light);
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 16px;
+      transition: var(--transition);
+      letter-spacing: 0.3px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(246, 100, 53, 0.3);
+    }
+    
+    .section {
+      padding: 120px 0;
+    }
+    
+    .section-light {
+      background-color: var(--light);
+    }
+    
+    .section-dark {
+      background-color: var(--gray);
+    }
+    
+    .section-header {
+      margin-bottom: 80px;
+      text-align: center;
+    }
+    
+    .section-subtitle {
+      color: var(--primary);
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+    
+    .section-description {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: rgba(17, 17, 17, 0.7);
+    }
+    
+    .skills-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    
+    .skills-content h3 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    
+    .skills-content p {
+      font-size: 18px;
+      color: rgba(17, 17, 17, 0.7);
+      margin-bottom: 32px;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .skill-tag {
+      padding: 8px 16px;
+      background-color: var(--secondary);
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    .skills-image {
+      height: 400px;
+      background-color: var(--secondary);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .skills-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .skills-icon-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    .skills-icon {
+      font-size: 32px;
+      color: var(--primary);
+    }
+    
+    .cta-section {
+      padding: 120px 0;
+      background-color: var(--secondary);
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-description {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: rgba(17, 17, 17, 0.7);
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: 80px 0 40px;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    
+    .footer-info h3 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    
+    .footer-info p {
+      font-size: 16px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .footer-nav a {
+      font-size: 16px;
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+    
+    .footer-nav a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 48px;
+      }
+      
+      .section-title {
+        font-size: 36px;
+      }
+      
+      .skills-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      
+      .skills-image {
+        order: -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 40px;
+      }
+      
+      .hero-description {
+        font-size: 18px;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 32px;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-header {
+        margin-bottom: 40px;
+      }
+      
+      .btn {
+        padding: 14px 28px;
+        font-size: 14px;
+      }
+    }
+  </style>  
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Hariom Lohar</a>
+        <div class="nav-links">
+          <a href="#expertise">Expertise</a>
+          <a href="#work">Work</a>
+          <a href="/contact1.html" class="cta-btn">Contact</a>
+        </div>
+        <div class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-gradient"></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-subtitle">Web & App Developer</p>
+        <h1 class="hero-title">Making digital <span>ideas real</span></h1>
+        <p class="hero-description">Creating exceptional web experiences and Flutter applications with a focus on performance and design.</p>
+        <a href="contact1.html" class="btn">Let's talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Expertise</p>
+        <h2 class="section-title">What I do</h2>
+        <p class="section-description">Solving complex problems with clean, efficient code and intuitive design.</p>
+      </div>
+      
+      <div class="skills-container">
+        <div class="skills-content">
+          <h3>Building digital experiences</h3>
+          <p>I create responsive websites and cross-platform mobile applications that combine elegant design with powerful functionality.</p>
+          
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Flutter</span>
+            <span class="skill-tag">Html</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-tag">Responsive Design</span>
+            <span class="skill-tag">APIs</span>
+          </div>
+        </div>
+        
+        <div class="skills-image">
+          <div class="skills-icon-container">
+            <div class="skills-icon"><i class="fas fa-code"></i></div>
+            <div class="skills-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="skills-icon"><i class="fas fa-paint-brush"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+
+        
+        <div class="skills-content">
+          <h3>From concept to launch</h3>
+          <p>I've worked on a variety of projects ranging from e-commerce platforms to mobile applications focused on delivering value through intuitive design and robust functionality.</p>
+          <a href="#contact" class="btn">View work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action Section -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Ready to bring your idea to life?</h2>
+      <p class="cta-description">Let's collaborate on your next digital project.</p>
+      <a href="contact1.html" class="btn">Connect</a>
+    </div>
+  </section>
+  
+  
+  
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3>Hariom Lohar</h3>
+          <p>Web & App Developer</p>
+          <p>Based in India</p>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Links</h3>
+          <div class="footer-nav">
+            <a href="#home">Home</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Hariom Lohar. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '60px';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        navLinks.style.backdropFilter = 'blur(20px)';
+        navLinks.style.padding = '20px';
+        navLinks.style.alignItems = 'center';
+        navLinks.style.gap = '20px';
+      }
+    });
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        const navLinks = document.querySelector('.nav-links');
+        if (window.innerWidth <= 768 && navLinks.style.display === 'flex') {
+          navLinks.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
